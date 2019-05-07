@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "server": {
+            "required": true,
+            "type": "string"
+        },
+        "serverName": {
+            "required": false,
+            "type": "string"
+        },
+        "pinTimeout": {
+            "required": false,
+            "type": "integer"
+        },
+        "pinTransTimeout": {
+            "required": false,
+            "type": "integer"
+        },
+        "pingTime": {
+            "required": false,
+            "type": "integer"
+        },
+        "serverFlags": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "requestBody": {
+            "type": "string"
+        }
+    }
+}

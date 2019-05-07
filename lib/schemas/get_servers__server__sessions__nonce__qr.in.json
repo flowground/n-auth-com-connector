@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "server": {
+            "required": true,
+            "type": "string"
+        },
+        "type": {
+            "required": true,
+            "type": "string"
+        },
+        "nonce": {
+            "required": true,
+            "type": "string"
+        },
+        "img": {
+            "required": false,
+            "type": "string"
+        },
+        "name": {
+            "required": false,
+            "type": "string"
+        },
+        "userid": {
+            "required": false,
+            "type": "string"
+        },
+        "realm": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

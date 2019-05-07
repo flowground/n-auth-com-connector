@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "format": "byte",
+            "type": "string"
+        }
+    }
+}

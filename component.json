@@ -1,0 +1,327 @@
+{
+    "title": "n-Auth",
+    "description": "API for the server",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/n-auth.com/0.0.3/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.n-auth.com/n",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api_key": {
+                "label": "x-apikey (api_key)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "post_nauth": {
+            "main": "./lib/actions/post_nauth.js",
+            "title": "n-Auth protocol",
+            "description": "Hook for the n-Auth protocol handler\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_nauth.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers_": {
+            "main": "./lib/actions/post_servers_.js",
+            "title": "Create a new server",
+            "description": "Create a new server. Required permission 'createserver'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server_": {
+            "main": "./lib/actions/get_servers__server_.js",
+            "title": "Configuration of specific server",
+            "description": "Returns the configuration of a specific server.\nRequired permission: 'servers' or 'createserver' \n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_servers__server_": {
+            "main": "./lib/actions/put_servers__server_.js",
+            "title": "Update configuration of specific server",
+            "description": "Update the configuration of a specific server.\nRequired permission: 'createserver' \n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_servers__server_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "delete_servers__server__accounts__accountid__": {
+            "main": "./lib/actions/delete_servers__server__accounts__accountid__.js",
+            "title": "Delete specific account",
+            "description": "Delete an account. Required permission 'accounts'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/delete_servers__server__accounts__accountid__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__accounts__accountid__": {
+            "main": "./lib/actions/get_servers__server__accounts__accountid__.js",
+            "title": "Get specific account. Required permission 'sessions' or 'accounts'",
+            "description": "Returns the account\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__accounts__accountid__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_servers__server__accounts__accountid__": {
+            "main": "./lib/actions/put_servers__server__accounts__accountid__.js",
+            "title": "Update specific account",
+            "description": "Update an account. The only available change is (un)blocking the account. Required permission 'accounts'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_servers__server__accounts__accountid__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers__server__accounts__accountid__provokelogin__nonce__": {
+            "main": "./lib/actions/post_servers__server__accounts__accountid__provokelogin__nonce__.js",
+            "title": "Provoke a login",
+            "description": "Provoke a login in the n-Auth app on the given session. Required permission 'sessions' or 'accounts'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers__server__accounts__accountid__provokelogin__nonce__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__sessions__nonce__": {
+            "main": "./lib/actions/get_servers__server__sessions__nonce__.js",
+            "title": "Check if the user is logged in",
+            "description": "Based on the browser/webserver session identifier, check if the user is logged in and return the associated username. The n-Auth server can handle multiple realms in which a user can separately be registrated. This also returns additional information: the data for a login visual (qr/nauth) code and whether or not a loggin can be provoked directly from the server. \nRequired permission: 'sessions'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__sessions__nonce__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers__server__sessions__nonce__logout": {
+            "main": "./lib/actions/post_servers__server__sessions__nonce__logout.js",
+            "title": "Force a logout on the given session",
+            "description": "Force a logout on the given session\n\nRequired permission: 'sessions' \n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers__server__sessions__nonce__logout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers__server__sessions__nonce__provokelogin": {
+            "main": "./lib/actions/post_servers__server__sessions__nonce__provokelogin.js",
+            "title": "Provoke a login",
+            "description": "Provoke a login in the n-Auth app on the given session. Required permission: 'sessions'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers__server__sessions__nonce__provokelogin.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__sessions__nonce__qr": {
+            "main": "./lib/actions/get_servers__server__sessions__nonce__qr.js",
+            "title": "Generate data for a qr code",
+            "description": "Returns the data for a n-auth or qr code.\nRequired permission: 'sessions'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__sessions__nonce__qr.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers__server__sessions__nonce__registeruser": {
+            "main": "./lib/actions/post_servers__server__sessions__nonce__registeruser.js",
+            "title": "Register a userid for the given realm.",
+            "description": "Register a user (under a certain realm) for the currently logged in user. You can also directly pass a userid when generating an ENROL qr code. Required permission 'users'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers__server__sessions__nonce__registeruser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__users_": {
+            "main": "./lib/actions/get_servers__server__users_.js",
+            "title": "Get all users",
+            "description": "Returns an array of arrays containing all accounts corresponding to all users\nRequired permission: 'users'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__users_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__users__userid__": {
+            "main": "./lib/actions/get_servers__server__users__userid__.js",
+            "title": "Get specific user",
+            "description": "Returns an array containing all accounts corresponding to this user\nRequired permission: 'sessions' or 'users'\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__users__userid__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_servers__server__users__userid__provokelogin__nonce__": {
+            "main": "./lib/actions/post_servers__server__users__userid__provokelogin__nonce__.js",
+            "title": "Provoke a login",
+            "description": "Provoke a login in the n-Auth app on the given session. Required permission 'users' or 'sessions'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_servers__server__users__userid__provokelogin__nonce__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_servers__server__vash_": {
+            "main": "./lib/actions/get_servers__server__vash_.js",
+            "title": "Visual hash of this server",
+            "description": "Returns a PNG of the visual hash corresponding to this server. Required permission 'sessions' or 'servers'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_servers__server__vash_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "server": {
+            "required": true,
+            "type": "string"
+        },
+        "accountid": {
+            "required": true,
+            "type": "integer"
+        }
+    }
+}
